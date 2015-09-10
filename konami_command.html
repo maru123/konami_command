@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <title>KonamiCommand</title>
     <style type="text/css">
-      button {
-        font-size: 1.4em;
-        padding: 10px 30px;
-      }
       #right {
         visibility: hidden;
         font-weight: bold;
@@ -19,21 +15,15 @@
     <h1>KonamiCommand</h1>
     <div class="konami-command">
       <p>「↑↑↓↓←→←→ba」を押下してみてください。</p>
-      <button id="reset">RESET</button>
       <p id="right">ヾ(￣∇￣=ﾉ ﾊﾞﾝｻﾞｰｲ♪ヾ(_ _)ﾉ ﾓﾋﾄﾂヾ=￣∇￣)ﾉ ﾊﾞﾝｻﾞｰｲ♪ konamiCommandが正しく打てた〜</p><br>
     </div>
     <script type="text/javascript">
     var input = [];
     var konami = [38,38,40,40,37,39,37,39,66,65];//↑↑↓↓←→←→baのキーコード
-    var resetBtn = document.getElementById('reset');
     var right = document.getElementById('right');
-    resetBtn.addEventListener('click', function reset(){
-          input = [];
-          right.style.visibility = "hidden";
-        });
     document.onkeydown = function (e){
       if (right.style.visibility === "visible") right.style.visibility = "hidden";
-      if (input.length > 10) input.splice(0,1);
+      if (input.length > 9) input.splice(0,1);
       input.push(e.keyCode);
       if (input.toString() === konami.toString()){
         right.style.visibility = "visible";
